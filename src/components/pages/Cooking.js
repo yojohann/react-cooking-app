@@ -5,10 +5,13 @@ import RecipeList from '../RecipeList';
 import RecipeEdit from '../RecipeEdit';
 
 export const RecipeContext = React.createContext()
+
 const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
 
 
-export default function Pricing() {
+
+
+function Cooking() {
 
     const [selectedRecipeId, setSelectedRecipeId] = useState()
     const [recipes, setRecipes] = useState(sampleRecipes)
@@ -31,42 +34,42 @@ export default function Pricing() {
     }
   
     function handleRecipeSelect(id) {
-      setSelectedRecipeId(id)
-    }
-  
-    function handleRecipeAdd() {
-      const newRecipe = {
-        id: uuidv4(),
-        name: '',
-        servings: 1,
-        cookTime: '',
-        instructions: '',
-        ingredients: [
-          { id: uuidv4(), name: '', amount: '' }
-        ]
+        setSelectedRecipeId(id)
+      }
+    
+      function handleRecipeAdd() {
+        const newRecipe = {
+          id: uuidv4(),
+          name: '',
+          servings: 1,
+          cookTime: '',
+          instructions: '',
+          ingredients: [
+            { id: uuidv4(), name: '', amount: '' }
+          ]
+        }
+    
+        setSelectedRecipeId(newRecipe.id)
+        setRecipes([...recipes, newRecipe])
+      }
+    
+      function handleRecipeChange(id, recipe) {
+        const newRecipes = [...recipes]
+        const index = newRecipes.findIndex(r => r.id === id)
+        newRecipes[index] = recipe
+        setRecipes(newRecipes)
+      }
+    
+      function handleRecipeDelete(id) {
+        if (selectedRecipeId != null && selectedRecipeId === id) {
+          setSelectedRecipeId(undefined)
+        }
+        setRecipes(recipes.filter(recipe => recipe.id !== id))
       }
   
-      setSelectedRecipeId(newRecipe.id)
-      setRecipes([...recipes, newRecipe])
-    }
-  
-    function handleRecipeChange(id, recipe) {
-      const newRecipes = [...recipes]
-      const index = newRecipes.findIndex(r => r.id === id)
-      newRecipes[index] = recipe
-      setRecipes(newRecipes)
-    }
-  
-    function handleRecipeDelete(id) {
-      if (selectedRecipeId != null && selectedRecipeId === id) {
-        setSelectedRecipeId(undefined)
-      }
-      setRecipes(recipes.filter(recipe => recipe.id !== id))
-    }
-
   return (
       <>
-    <div>Pricing</div>
+    <div>Cooking</div>
     
     <RecipeContext.Provider value={recipeContextValue}>
       <RecipeList recipes={recipes} />
@@ -78,6 +81,8 @@ export default function Pricing() {
 
 
 
+export default Cooking;
+ 
 const sampleRecipes = [
     {
       id: 1,

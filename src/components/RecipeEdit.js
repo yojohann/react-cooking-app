@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import RecipeIngredientEdit from './RecipeIngredientEdit'
-import { RecipeContext } from './App'
+import { RecipeContext } from './pages/Cooking'
 //import uuidv4 from 'uuid/v4'
 import { v4 as uuidv4 } from 'uuid';
 

@@ -3,10 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from "./Navbar";
 import '../css/app.css';
 import Home from './pages/Home';
-import Pricing from './pages/Pricing';
+import Cooking from './pages/Cooking';
 import About from './pages/About';
 
-export const RecipeContext = React.createContext()
 
 function App() {
 
@@ -17,7 +16,7 @@ function App() {
     <div className="container">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/cooking" element={<Cooking />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </div>

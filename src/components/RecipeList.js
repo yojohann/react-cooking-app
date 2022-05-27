@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import Recipe from './Recipe'
-import { RecipeContext } from './App'
+import { RecipeContext } from './pages/Cooking'
 
 export default function RecipeList({ recipes }) {
   const { handleRecipeAdd } = useContext(RecipeContext)
 
   return (
     <div className="recipe-list">
+      
       <div>
         {recipes.map(recipe => {
           return (
@@ -25,4 +26,4 @@ export default function RecipeList({ recipes }) {
     </div>
   )
 }
- 
+
